@@ -1,0 +1,34 @@
+{
+  "name": "dsh-osk-lift",
+  "version": "0.1.0",
+  "description": "Squeeze the DSH Web GUI into the top 45% of the screen when a text field is focused, so an on-screen keyboard (Steam Deck / SteamOS, touchscreen) never covers the input box.",
+  "type": "module",
+  "main": "plugin.mjs",
+  "exports": {
+    ".": "./plugin.mjs"
+  },
+  "files": [
+    "plugin.mjs",
+    "osk-lift.css",
+    "osk-lift.js",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "install-plugin": "./install.sh"
+  },
+  "keywords": [
+    "dsh",
+    "deepseek-harness",
+    "cordis-plugin",
+    "steam-deck",
+    "steamos",
+    "on-screen-keyboard",
+    "virtual-keyboard",
+    "touch"
+  ],
+  "license": "MIT",
+  "engines": {
+    "node": ">=20"
+  }
+}

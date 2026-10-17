@@ -1,0 +1,43 @@
+/* dsh-osk-lift —— 屏幕键盘弹出时，把界面压到屏幕上半部分（0.45 屏高）
+ * 主要做法是"缩小"（等同安卓 adjustResize），压不下去时退回"整体上移"（等同 adjustPan）。 */
+
+/* 优先：把 #root 的高度压到 --dsh-osk-h（默认 45% 屏高），界面自己重排，
+   输入框会停在 45% 那条线上，下面留出整块给键盘 */
+body.dsh-osk-lift #root {
+  height: var(--dsh-osk-h, 45vh) !important;
+  min-height: 0 !important;
+  max-height: var(--dsh-osk-h, 45vh) !important;
+  transition: height 150ms ease-out;
+}
+
+/* 兜底：如果界面内部写死了 100vh 压不下去，就整体上移 55%，
+   让内容底边落在 45% 处 */
+body.dsh-osk-lift-shift #root {
+  transform: translateY(calc(var(--dsh-osk-h, 45vh) - 100%));
+  transition: transform 150ms ease-out;
+}
+
+body.dsh-osk-lift,
+body.dsh-osk-lift-shift {
+  overflow: hidden;
+}
+
+/* ---- 触摸优化：发送 / 停止按钮的可点范围变大，视觉大小不变 ---- */
+[aria-label="发送消息"],
+[aria-label="停止生成"],
+[aria-label="排队发送"],
+[aria-label="插话发送"] {
+  position: relative;
+  touch-action: manipulation;
+}
+
+/* 用伪元素把命中区向外扩 8px（左右上下各一圈），手指按偏一点也能点中 */
+[aria-label="发送消息"]::after,
+[aria-label="停止生成"]::after,
+[aria-label="排队发送"]::after,
+[aria-label="插话发送"]::after {
+  content: "";
+  position: absolute;
+  inset: -8px;
+  border-radius: 9999px;
+}
