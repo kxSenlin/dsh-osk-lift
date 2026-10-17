@@ -25,7 +25,7 @@
 ## 安装
 
 ```bash
-git clone https://github.com/<user>/dsh-osk-lift.git
+git clone https://github.com/kxSenlin/dsh-osk-lift.git
 cd dsh-osk-lift
 ./install.sh          # 默认挂到 web profile；也可 ./install.sh 其他profile
 ```
@@ -43,7 +43,7 @@ cd dsh-osk-lift
 也可以手动加这段 YAML，或者把本仓库作为依赖装进 profile：
 
 ```bash
-dsh plugin --profile web add github:<user>/dsh-osk-lift
+dsh plugin --profile web add github:kxSenlin/dsh-osk-lift
 # 然后 patch 里写 name: dsh-osk-lift
 ```
 
